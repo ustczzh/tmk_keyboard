@@ -4,4 +4,19 @@ KEYMAP_SECTION_ENABLE = yes
 BATT_ENABLE = no
 ENABLE_HHKB_POWER_SAVING = no
 LUFA_DEBUG_SUART = no
+
+
+
+ifeq (yes,$(strip $(BATT_ENABLE)))
+    OPT_DEFS += -DBATT_ENABLE
+endif
+
+ifeq (yes,$(strip $(ENABLE_HHKB_POWER_SAVING)))
+    OPT_DEFS += -DENABLE_HHKB_POWER_SAVING
+endif
+
+ifeq (yes,$(strip $(LUFA_DEBUG_SUART)))
+    OPT_DEFS += -DLUFA_DEBUG_SUART
+endif
+
 include Makefile.rn42
