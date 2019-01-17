@@ -77,11 +77,8 @@ USB usb_host;
 USBHub hub1(&usb_host);
 USBHub hub2(&usb_host);
 #endif
-HIDBoot<USB_HID_PROTOCOL_KEYBOARD | USB_HID_PROTOCOL_MOUSE> HidComposite1(&usb_host);
 HIDBoot<USB_HID_PROTOCOL_KEYBOARD>    HidKeyboard1(&usb_host);
-HIDBoot<USB_HID_PROTOCOL_MOUSE>       HidMouse1(&usb_host);
 KBDReportParser kbd_parser1;
-MOUSEReportParser mouse_parser1;
 #ifdef MULTI_KBD_ENABLE
 HIDBoot<USB_HID_PROTOCOL_KEYBOARD>    HidKeyboard2(&usb_host);
 HIDBoot<USB_HID_PROTOCOL_KEYBOARD>    HidKeyboard3(&usb_host);
@@ -90,7 +87,11 @@ KBDReportParser kbd_parser2;
 KBDReportParser kbd_parser3;
 KBDReportParser kbd_parser4;
 #endif
-
+#ifdef COMPOSITE_ENABLE
+HIDBoot<USB_HID_PROTOCOL_KEYBOARD | USB_HID_PROTOCOL_MOUSE> HidComposite1(&usb_host);
+HIDBoot<USB_HID_PROTOCOL_MOUSE>       HidMouse1(&usb_host);
+MOUSEReportParser mouse_parser1;
+#endif
 
 
 uint8_t matrix_rows(void) { return MATRIX_ROWS; }
@@ -100,10 +101,12 @@ void matrix_init(void) {
     debug_enable = true;
     // USB Host Shield setup
     usb_host.Init();
+    #ifdef COMPOSITE_ENABLE
     HidComposite1.SetReportParser(0, (HIDReportParser*)&kbd_parser1);
     HidComposite1.SetReportParser(1, (HIDReportParser*)&mouse_parser1);
-    HidKeyboard1.SetReportParser(0, (HIDReportParser*)&kbd_parser1);
     HidMouse1.SetReportParser(0, (HIDReportParser*)&mouse_parser1);
+    #endif
+    HidKeyboard1.SetReportParser(0, (HIDReportParser*)&kbd_parser1);
     #ifdef MULTI_KBD_ENABLE
     HidKeyboard2.SetReportParser(0, (HIDReportParser*)&kbd_parser2);
     HidKeyboard3.SetReportParser(0, (HIDReportParser*)&kbd_parser3);
@@ -111,7 +114,7 @@ void matrix_init(void) {
     #endif
 }
 
-#ifdef MULTI_KBD_ENABLE
+//#ifdef MULTI_KBD_ENABLE
 static void or_report(report_keyboard_t report) {
     // integrate reports into keyboard_report
     keyboard_report.mods |= report.mods;
@@ -126,7 +129,7 @@ static void or_report(report_keyboard_t report) {
         }
     }
 }
-#endif
+//#endif
 
 uint8_t matrix_scan(void) {
     static uint16_t last_time_stamp1 = 0;
@@ -135,7 +138,9 @@ uint8_t matrix_scan(void) {
     static uint16_t last_time_stamp3 = 0;
     static uint16_t last_time_stamp4 = 0;
     #endif
+    #ifdef COMPOSITE_ENABLE
     static uint16_t last_time_stamp1m = 0;
+    #endif
 
     // check report came from keyboards
     if (   kbd_parser1.time_stamp != last_time_stamp1
@@ -153,15 +158,15 @@ uint8_t matrix_scan(void) {
         last_time_stamp4 = kbd_parser4.time_stamp;
         #endif
 
-        #ifdef MULTI_KBD_ENABLE
         // clear and integrate all reports
         keyboard_report = {};
         or_report(kbd_parser1.report);
+        #ifdef MULTI_KBD_ENABLE
         or_report(kbd_parser2.report);
         or_report(kbd_parser3.report);
         or_report(kbd_parser4.report);
-        #else
-        keyboard_report = kbd_parser1.report;
+        //#else
+        //keyboard_report = kbd_parser1.report;
         #endif
 
         matrix_is_mod = true;
@@ -175,6 +180,7 @@ uint8_t matrix_scan(void) {
         matrix_is_mod = false;
     }
 
+    #ifdef COMPOSITE_ENABLE
     //report that comes from mouse
     if ( mouse_parser1.time_stamp != last_time_stamp1m ) {
         last_time_stamp1m = mouse_parser1.time_stamp;
@@ -187,7 +193,8 @@ uint8_t matrix_scan(void) {
         mouse_parser1.report.v = 0;
         mouse_parser1.report.h = 0;
         mouse_parser1.report.buttons = 0;
-    }   
+    }
+    #endif
 
     uint16_t timer;
     timer = timer_read();
