@@ -72,8 +72,7 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSPC,
     LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,          ENT_,
     LSFT,     Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RSFT,L7,
-         L5,  LALT,               SPC,                     RALT,RGUI ),
-
+         L5,  LALT,               SPC,                     CAP6,RGUI ),
     [2] = UNIMAP_HHKB(
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,
@@ -93,14 +92,14 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,
          TRNS,TRNS,               TRNS,                    TRNS,TRNS ),
     [5] = UNIMAP_HHKB(
-    ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL,
-    CAPS,M_1 ,TRNS,TRNS,TRNS,TRNS,TRNS,PGUP,UP,  PGDN,TRNS,DL1, DL0,      BSPC,
-    TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,HOME,LEFT,DOWN,RGHT,END, TRNS,          ENT,
-    MPLY,     MNXT,MPRV,MSTP,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,7,   8,   9,   0,   PMNS,PPLS,DL1, DL0, 
+    TRNS,M_1 ,TRNS,TRNS,TRNS,TRNS,TRNS,4,   5,   6,   PAST,TRNS,TRNS,     TRNS,
+    TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,TRNS,1,   2,   3,   PENT,TRNS,          ENT,
+    MPLY,     MNXT,MPRV,MSTP,TRNS,TRNS,TRNS,0,   TRNS,TRNS,PSLS,     TRNS,TRNS,
          TRNS,TRNS,               SPC,                     TRNS,TRNS ),
     [6] = UNIMAP_HHKB(
     CLSE,F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL,
-    CAPS,WH_L,WH_U,MS_U,WH_D,WH_R,DEL, PGUP,UP,  PGDN,TRNS,TRNS,TRNS,     BSPC,
+    TRNS,WH_L,WH_U,MS_U,WH_D,WH_R,DEL, PGUP,UP,  PGDN,TRNS,TRNS,TRNS,     BSPC,
     TRNS,LTAB,MS_L,MS_D,MS_R,RTAB,HOME,LEFT,DOWN,RGHT,END, BSPC,          ENT,
     TRNS,     BACK,FRWD,BTN1,BTN2,BTN3,BSPC,ENT, TRNS,TRNS,TRNS,     TRNS,TRNS,
          CMPT,RNPD,               SPC,                     RCAL,DSKT ),
