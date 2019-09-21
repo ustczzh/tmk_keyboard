@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 F_CPU = 8000000
 F_USB = 8000000
 UNIMAP_ENABLE = yes
 KEYMAP_SECTION_ENABLE = yes
 include Makefile
+

@@ -19,11 +19,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CONFIG_H
 
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x9801
+#define PRODUCT_ID      0x8801
 #define DEVICE_VER      0x0101
 #define MANUFACTURER    t.m.k.
-#define PRODUCT         PC98 keyboard converter
-#define DESCRIPTION     converts PC98 keyboard protocol into USB
+#define PRODUCT         PC88 keyboard converter
+#define DESCRIPTION     converts PC88 keyboard protocol into USB
 
 
 /* matrix size */
@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key combination for command */
 #define IS_COMMAND()    ( \
-    matrix_is_on(12, 0) || /* STOP */ \
+    keyboard_report->keys[0] == KC_STOP || \
     keyboard_report->mods == (MOD_BIT(KC_LALT) | MOD_BIT(KC_RALT)) \
 )
 
@@ -42,35 +42,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-/* Control LED indicatiors, which doesn't work well with locking support */
-#define PC98_LED_CONTROL
-
-
-/* PC98 Reset Port shared with TXD */
-#define PC98_RST_DDR    DDRD
-#define PC98_RST_PORT   PORTD
-#define PC98_RST_BIT    3
-/* PC98 Ready Port */
-#define PC98_RDY_DDR    DDRD
-#define PC98_RDY_PORT   PORTD
-#define PC98_RDY_BIT    4
-/* PC98 Retry Port */
-#define PC98_RTY_DDR    DDRD
-#define PC98_RTY_PORT   PORTD
-#define PC98_RTY_BIT    1
 
 /*
- * PC98 Serial(USART) configuration
- *     asynchronous, positive logic, 19200baud, bit order: LSB first
- *     1-start bit, 8-data bit, odd parity, 1-stop bit
+ * PC88 Serial(USART) configuration
+ *     asynchronous, positive logic, 20800baud, bit order: LSB first
+ *     1-start bit, 8-data bit, non parity, 1-stop bit
  */
 
 /*
  * Software Serial
  *   Add protocol/serial_soft.c to SRC in Makefile
  */
-#define SERIAL_SOFT_BAUD                19200
-#define SERIAL_SOFT_PARITY_ODD
+#define SERIAL_SOFT_BAUD                20800
+#define SERIAL_SOFT_PARITY_NONE
 #define SERIAL_SOFT_BIT_ORDER_LSB
 #define SERIAL_SOFT_LOGIC_POSITIVE
 /* RXD Port */
@@ -115,7 +99,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *   Add protocol/serial_uart.c to SRC in Makefile
  */
 #if defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega32U2__)
-    #define SERIAL_UART_BAUD       19200
+    #define SERIAL_UART_BAUD       20800
     #define SERIAL_UART_DATA       UDR1
     #define SERIAL_UART_UBRR       ((F_CPU/(16UL*SERIAL_UART_BAUD))-1)
     #define SERIAL_UART_RXD_VECT   USART1_RX_vect
@@ -125,7 +109,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         UBRR1H = (uint8_t) (SERIAL_UART_UBRR>>8);  /* baud rate */ \
         UCSR1B |= (1<<RXCIE1) | (1<<RXEN1); /* RX interrupt, RX: enable */ \
         UCSR1B |= (0<<TXCIE1) | (1<<TXEN1); /* TX interrupt, TX: enable */ \
-        UCSR1C |= (1<<UPM11) | (1<<UPM10);  /* parity: none(00), even(01), odd(11) */ \
+        UCSR1C |= (0<<UPM11) | (0<<UPM10);  /* parity: none(00), even(01), odd(11) */ \
         DDRD  &= ~(1<<2); PORTD |=  (1<<2); /* Pull-up RXD pin */ \
         sei(); \
     } while(0)
