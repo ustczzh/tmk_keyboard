@@ -1,5 +1,5 @@
 # Target file name (without extension).
-TARGET ?= pc98_usb
+TARGET ?= pc88_usb
 
 # Directory common source filess exist
 TMK_DIR ?= ../../tmk_core
@@ -50,7 +50,7 @@ ARCH ?= AVR8
 F_USB ?= $(F_CPU)
 
 # Interrupt driven control endpoint task
-#OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
+OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
 
 # Build Options
@@ -61,7 +61,7 @@ EXTRAKEY_ENABLE ?= yes	# Audio control and System control
 CONSOLE_ENABLE ?= yes	# Console for debug
 COMMAND_ENABLE ?= yes    # Commands for debug and configuration
 #NKRO_ENABLE ?= yes	# USB Nkey Rollover
-UNIMAP_ENABLE ?= yes
+##UNIMAP_ENABLE ?= yes
 
 
 # Boot Section Size in bytes

@@ -4,7 +4,7 @@ USB_HID_DIR = protocol/usb_hid
 #
 # USB Host Shield
 #
-USB_HOST_SHIELD_DIR = $(USB_HID_DIR)/USB_Host_Shield_2.0-git
+USB_HOST_SHIELD_DIR = $(USB_HID_DIR)/USB_Host_Shield_2.0-tmk
 USB_HOST_SHIELD_SRC = \
 	$(USB_HOST_SHIELD_DIR)/Usb.cpp \
 	$(USB_HOST_SHIELD_DIR)/usbhid.cpp \
@@ -72,3 +72,4 @@ VPATH += $(TMK_DIR)/$(ARDUINO_DIR)/variants/leonardo
 #    On Linux no problem.
 #    Change file name common/print.h to console.h ?
 VPATH := $(TMK_DIR)/common $(VPATH)
+
