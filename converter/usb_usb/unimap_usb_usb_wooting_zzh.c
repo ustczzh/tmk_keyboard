@@ -23,8 +23,6 @@ enum macro_id {
     RUN_NOTEPAD,
     RUN_CALC,
     M_1,
-    M_M1,
-    M_M2,
     //WIN_MIN,
     //WIN_MAX,
     //ALT_TAB,
@@ -37,8 +35,6 @@ enum macro_id {
 #define AC_RNPD    ACTION_MACRO(RUN_NOTEPAD)    //Open Notepad;
 #define AC_RCAL    ACTION_MACRO(RUN_CALC)       //Open Calculator; KC_CALC
 #define AC_M_1     ACTION_MACRO(M_1)            //Run Macro 1;
-#define AC_M_M1    ACTION_MACRO(M_M1)           //Run Macro Mathtype;
-#define AC_M_M2    ACTION_MACRO(M_M2)           //Run Macro Mathtype;
 //#define AC_WMAX    ACTION_MACRO(WIN_MAX)          //Maximize the current window;
 //#define AC_WMIN    ACTION_MACRO(WIN_MIN)          //Minimize the current window;
 
@@ -52,6 +48,7 @@ enum macro_id {
 #define AC_DL2     ACTION_DEFAULT_LAYER_SET(2)
 #define AC_TAB5    ACTION_LAYER_TAP_KEY(5, KC_TAB)
 #define AC_ESC6    ACTION_LAYER_TAP_KEY(6, KC_ESC)
+#define AC_GRV6    ACTION_LAYER_TAP_KEY(6, KC_GRV)
 #define AC_SPC6    ACTION_LAYER_TAP_KEY(6, KC_SPC)
 #define AC_CAP7    ACTION_LAYER_TAP_KEY(7, KC_CAPS)
 #define AC_CMPT    ACTION_MODS_KEY(MOD_LGUI, KC_E)      //Open My Computer; KC_MYCM
@@ -84,35 +81,35 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] __attribute__ ((section ("
 #else
 const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 #endif
-//0, for HHKB BT, Colemak
+//0, for wooting one, Colemak
     UNIMAP(
               F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
-    ESC6,     F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           RGUI,SLCK,PAUS,         VOLD,VOLU,MUTE,
-    GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,
-    TAB5,Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN,LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,
-    CAPS,A,   R,   S,   T,   D,   H,   N,   E,   I,   O,   QUOT,     NUHS,ENT_,                        P4,  P5,  P6,  PCMM,
+    ESC6,     F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           PSCR,SLCK,PAUS,         VOLD,VOLU,MUTE,
+    GRV6,1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSLS,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,
+    TAB5,Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN,LBRC,RBRC,     BSPC,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,
+    LCTL,A,   R,   S,   T,   D,   H,   N,   E,   I,   O,   QUOT,     NUHS,ENT_,                        P4,  P5,  P6,  PCMM,
     LSFT,NUBS,Z,   X,   C,   V,   B,   K,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PENT,
-    LCTL,L5  ,LALT,MHEN,          SPC6,          HENK,KANA,CAP7,RGUI,L7,  L7,       LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
+    CAPS,L5  ,LALT,MHEN,          SPC6,          HENK,KANA,CAP7,RGUI,L7,  L7,       LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
     ),
 //1, for HHKB BT & ThinkPad, QWERTY, Game
     UNIMAP(
               F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
-    ESC,      F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           RGUI,SLCK,PAUS,         VOLD,VOLU,MUTE,
+    ESC,      F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           PSCR,SLCK,PAUS,         VOLD,VOLU,MUTE,
     GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,
     TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,
     CAPS,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,ENT_,                        P4,  P5,  P6,  PCMM,
     LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PENT,
     LCTL,L5  ,LALT,MHEN,          SPC,           HENK,KANA,CAP7,RGUI,L7,  L7,       LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
     ),
-//2, for ThinkPad, Colemak
+//2, TRNS
     UNIMAP(
-              F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
-    ESC6,     F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           RGUI,SLCK,PAUS,         VOLD,VOLU,MUTE,
-    GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSLS,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,
-    TAB5,Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN,LBRC,RBRC,     BSPC,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,
-    LCTL,A,   R,   S,   T,   D,   H,   N,   E,   I,   O,   QUOT,     NUHS,ENT_,                        P4,  P5,  P6,  PCMM,
-    LSFT,NUBS,Z,   X,   C,   V,   B,   K,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PENT,
-    L5  ,LGUI,LALT,MHEN,          SPC6,          HENK,KANA,CAP7,RGUI,L7,  L7,       LEFT,DOWN,RGHT,    P0,       PDOT,PEQL
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+    TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,          TRNS,          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
 //3, TRNS
     UNIMAP(
@@ -134,27 +131,27 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,          TRNS,          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS
     ),
-//5, HHKB BT, L3
+//5, wooting one, L3
     UNIMAP(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
     TRNS,F1,  F2,  F3,  F4,  F5,  F6,  7,   8,   9,   0,   PMNS,PPLS,TRNS,TRNS,     DL1, TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,
-    TRNS,M_1 ,M_M1,M_M2,TRNS,TRNS,TRNS,4,   5,   6,   PAST,TRNS,TRNS,     TRNS,     DL0, DL2, TRNS,    TRNS,TRNS,TRNS,TRNS,
+    TRNS,M_1 ,TRNS,TRNS,TRNS,TRNS,TRNS,4,   5,   6,   PAST,TRNS,TRNS,     TRNS,     DL0, DL2, TRNS,    TRNS,TRNS,TRNS,TRNS,
     TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,TRNS,1,   2,   3,   PENT,TRNS,     TRNS,ENT,                         TRNS,TRNS,TRNS,TRNS,
     MPLY,TRNS,MPRV,MNXT,MSTP,TRNS,TRNS,TRNS,0,   TRNS,TRNS,PSLS,     TRNS,TRNS,          PGUP,         TRNS,TRNS,TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,          SPC,           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     HOME,PGDN,END,     TRNS,     TRNS,TRNS
     ),
-//6, HHKB BT, L2
+//6, wooting one, L2
     UNIMAP(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     CLSE,     MUTE,VOLD,VOLU,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
     GRV, WIN1,WIN2,WIN3,WIN4,WIN5,WIN6,WIN7,WIN8,WIN9,WIN0,F11, F12, TRNS,TRNS,     TRNS,TRNS,BACK,    TRNS,TRNS,TRNS,TRNS,
     WMAX,WH_L,WH_U,MS_U,WH_D,WH_R,DEL, PGUP,UP,  PGDN,TRNS,PTAB,NTAB,     BSPC,     TRNS,TRNS,FRWD,    TRNS,TRNS,TRNS,TRNS,
-    TRNS,LTAB,MS_L,MS_D,MS_R,RTAB,HOME,LEFT,DOWN,RGHT,END, BSPC,     TRNS,ENT,                         TRNS,TRNS,TRNS,TRNS,
+    WTAB,LTAB,MS_L,MS_D,MS_R,RTAB,HOME,LEFT,DOWN,RGHT,END, BSPC,     TRNS,ENT,                         TRNS,TRNS,TRNS,TRNS,
     WMIN,TRNS,BACK,FRWD,BTN1,BTN2,BTN3,BSPC,ENT, PTAB,NTAB,TRNS,     TRNS,TRNS,          PGUP,         TRNS,TRNS,TRNS,TRNS,
-    WTAB,MYCM,RNPD,TRNS,          SPC,           TRNS,TRNS,CALC,DSKT,TRNS,TRNS,     HOME,PGDN,END,     TRNS,     TRNS,TRNS
+    TRNS,MYCM,RNPD,TRNS,          SPC,           TRNS,TRNS,CALC,DSKT,TRNS,TRNS,     HOME,PGDN,END,     TRNS,     TRNS,TRNS
     ),
-//7, HHKB BT, L1
+//7, wooting one, L1
     UNIMAP(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     MUTE,VOLD,VOLU,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,         TRNS,TRNS,TRNS,
@@ -197,14 +194,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case M_1:
             return (record->event.pressed ?
                     MACRO( T(1),T(2),T(1),T(0),T(0),T(0),T(0),T(0),T(4),T(0),T(0),T(0),T(0),T(0),T(6),T(2),T(4),D(LSFT),T(D),U(LSFT), END ) :
-                    MACRO_NONE );
-        case M_M1:
-            return (record->event.pressed ?
-                    MACRO( D(LCTL),D(LALT),T(Q),U(LALT),U(LCTL), END ) :
-                    MACRO_NONE );
-        case M_M2:
-            return (record->event.pressed ?
-                    MACRO( D(LCTL),T(V),U(LCTL),W(100),D(LALT),T(F4),U(LALT), END ) :
                     MACRO_NONE );
         //case WIN_MIN:
         //    return (record->event.pressed ?

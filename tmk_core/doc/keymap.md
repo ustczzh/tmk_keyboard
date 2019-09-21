@@ -92,7 +92,7 @@ Note that ***higher layers have priority in the layer stack***. The firmware sta
 
 `KC_TRNS` is a special placeholder which can be used on overlay layers. This allows for the creation of "partial" layers which fall back on the lower layers, eliminating a good deal of repetition in keymap files.
 
-
+*
 
 ### 0.3 Keymap Example
 The keymap is defined in the **`uint8_t keymaps[]`** array, a 2-dimensional array of rows and columns corresponding to positions in the keyboard matrix. But most often the layers are defined using C macros to allow for easier reading and editing of the keymap files. To use complex actions you need to define `Fn` action in the **`action_t fn_actions[]`** array.

@@ -1,6 +1,21 @@
+TARGET ?= usb_usb_unimap
 F_CPU = 16000000
 F_USB = 16000000
-TARGET = usb_usb_unimap
 UNIMAP_ENABLE ?= yes
 KEYMAP_SECTION_ENABLE ?= yes
+MULTI_KBD_ENABLE ?= yes
+COMPOSITE_ENABLE ?= no
+USBHUB_ENABLE ?= yes
+
+ifeq (yes,$(strip $(MULTI_KBD_ENABLE)))
+    OPT_DEFS += -DMULTI_KBD_ENABLE
+endif
+
+ifeq (yes,$(strip $(COMPOSITE_ENABLE)))
+    OPT_DEFS += -DCOMPOSITE_ENABLE
+endif
+
+ifeq (yes,$(strip $(USBHUB_ENABLE)))
+    OPT_DEFS += -DUSBHUB_ENABLE
+endif
 include Makefile
