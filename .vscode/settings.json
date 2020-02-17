@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "matrix.h": "c",
+        "hhkb_avr.h": "c",
+        "lufa.h": "c",
+        "descriptor.h": "c",
+        "usb.h": "c",
+        "report.h": "c",
+        "keycode.h": "c"
+    }
+}
