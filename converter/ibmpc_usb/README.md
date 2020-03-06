@@ -3,7 +3,12 @@ IBM PC Keyboard Converter
 The converter translates IBM PC keyboard protocols to use classic keyboards with modern computer with USB ports.
 It supports both IBM XT and AT protocols, and all of scan code set 1, 2 and 3 with one firmware.
 
-This is not finish project and still work in progress as of 2019-12-02. Test in the field and feedback from users are needed to improve
+This is not finished project and still work in progress as of 2020-03-02. Test in the field and feedback from users are needed to improve firmware code.
+
+You can discuss about this project here.
+
+https://geekhack.org/index.php?topic=103648.0
+
 
 This project is intended to integrated existent TMK XT, PS/2 and Terminal converters.
 
@@ -144,6 +149,9 @@ https://www.seasip.info/VintagePC/ibm_1391406.html)
 
 [7] [The IBM 6110344 Keyboard - Scan Code Set 3 of 122-key terminal keyboard](
 https://www.seasip.info/VintagePC/ibm_6110344.html)
+
+[8] [IBM PC AT Technical Reference 1986](
+(http://bitsavers.org/pdf/ibm/pc/at/6183355_PC_AT_Technical_Reference_Mar86.pdf)
 
 [y] [TrackPoint Engineering Specifications for version 3E](
 https://web.archive.org/web/20100526161812/http://wwwcssrv.almaden.ibm.com/trackpoint/download.html)
